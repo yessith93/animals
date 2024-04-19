@@ -81,8 +81,16 @@
     });
 
     dogWord.addEventListener('click', function() {
-      wordSound.currentTime = 0;
-      wordSound.play();
+      let texto = "Perro"; 
+      let idiomaSeleccionado ="es"
+      var synthesis = window.speechSynthesis;
+      // Crear un nuevo objeto SpeechSynthesisUtterance
+      var utterance = new SpeechSynthesisUtterance(texto);
+      // Establecer el idioma del texto a leer
+      utterance.lang = idiomaSeleccionado;
+
+      // Hacer que el síntesis de voz lea el texto
+      synthesis.speak(utterance);
     });
     fullscreenButton.addEventListener('click', function() {
       launchFullScreen(document.documentElement);
