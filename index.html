@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tarjeta Interactiva de Perro</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5e8d2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .card {
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      width: 50vw;
+    }
+    img {
+      width: 35vw;
+      height: auto;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+    img:active {
+      transform: scale(0.95);
+    }
+    p {
+      margin: 0;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+    }
+    button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 20px;
+      cursor: pointer;
+      border-radius: 4px;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <img src="images/pngtree-golden-retriever-dog-playing-with-a-tennis-ball-png-image_14882691.webp" alt="Perro" id="dog-image">
+    <p id="dog-word">Perro</p>
+  </div>
+
+  <audio id="bark-sound" src="sounds/ES_Dog Bark.mp3" preload="auto"></audio>
+  <audio id="word-sound" src="https://example.com/perro-audio.mp3" preload="auto"></audio>
+  <button id="fullscreenButton">Pantalla completa</button>
+
+  <script>
+    var dogImage = document.getElementById('dog-image');
+    var barkSound = document.getElementById('bark-sound');
+    var wordSound = document.getElementById('word-sound');
+    var dogWord = document.getElementById('dog-word');
+
+    dogImage.addEventListener('click', function() {
+      barkSound.currentTime = 0;
+      barkSound.play();
+    });
+
+    dogWord.addEventListener('click', function() {
+      wordSound.currentTime = 0;
+      wordSound.play();
+    });
+    fullscreenButton.addEventListener('click', function() {
+      launchFullScreen(document.documentElement);
+    });
+
+    function launchFullScreen(element) {
+      if(element.requestFullscreen) {
+        element.requestFullscreen();
+      } else if(element.mozRequestFullScreen) {
+        element.mozRequestFullScreen();
+      } else if(element.webkitRequestFullscreen) {
+        element.webkitRequestFullscreen();
+      } else if(element.msRequestFullscreen) {
+        element.msRequestFullscreen();
+      }
+    }
+  </script>
+</body>
+</html>
